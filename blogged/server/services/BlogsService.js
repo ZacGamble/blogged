@@ -37,8 +37,8 @@ class BlogsService{
         if(removedBlog.creatorId.toString() !== userId){
             throw new Forbidden("You do not own this blog!")
         }
-        await removedBlog.save()
-        return "The blog has been destroyed.."
+        await removedBlog.delete()
+        return removedBlog;
     }
 
 }
