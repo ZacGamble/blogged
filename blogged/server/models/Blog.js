@@ -8,7 +8,6 @@ export const BlogSchema = new Schema({
     subtitle: { type: String, required: true },
     body: { type: String, required: true },
     img: { type: String, required: true },
-    isFavorite: {type: Boolean, default: false}
 },
     { timestamps: true, toJSON: { virtuals: true } }
 );

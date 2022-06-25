@@ -2,20 +2,20 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest, Forbidden } from "../utils/Errors";
 class BlogsService{
     async getAll() {
-        return await dbContext.Blog.find().populate('creator');
+        return await dbContext.Blogs.find().populate('creator');
     }
     async getById(blogId) {
-        const foundBlog = await dbContext.Blog.findById(blogId).populate('creator');
+        const foundBlog = await dbContext.Blogs.findById(blogId).populate('creator');
         if(!foundBlog){
             throw new BadRequest("Could not find a blog with that ID")
         }
         return foundBlog;
     }
     async getBlogComments(blogId) {
-        // return await dbContext.Comments.find({blogId}).populate('creator')
+        return await dbContext.Comments.find({blogId}).populate('creator')
     }
     async create(body) {
-        const blog = await dbContext.Blog.create(body)
+        const blog = await dbContext.Blogs.create(body)
         await blog.populate('creator')
         return blog;
     }
